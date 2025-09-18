@@ -5,6 +5,14 @@ const cancelBtn = document.querySelector(".cancel-btn");
 const coursesMask = document.querySelector(".delete-mask");
 const coursesArea = document.querySelector(".courses");
 
+// 顏色選擇器元素
+const TimeDayBgColor = document.querySelector("#TimeDayBgColor");
+const ABBgColor = document.querySelector("#ABBgColor");
+const TimeBgColor = document.querySelector("#TimeBgColor");
+const Time2BgColor = document.querySelector("#Time2BgColor");
+const tableBgColor = document.querySelector("#tableBgColor");
+const resetColorBtn = document.querySelector("#resetColorBtn");
+
 const courseDialog = document.getElementById("courseDialog");
 const closeModal = document.getElementById("closeModal");
 const courseForm = document.getElementById("courseForm");
@@ -205,6 +213,50 @@ cancelBtn.addEventListener("click", () => {
           </div>`;
     courseList.push("嘗試新增課程");
   }
+});
+
+// 顏色選擇器
+document.querySelectorAll(".color-controls input").forEach((input) => {
+  input.addEventListener("input", (e) => {
+    // 取得 input 的 id 變更，例如: TimeDayBgColor -> TimeDay-bgc
+    const id = input.id;
+    if (id.endsWith("BgColor")) {
+      const propertyName = id.replace("BgColor", "-bgc");
+      // 變更對應 property 的元素
+      document.documentElement.style.setProperty(
+        `--${propertyName}`,
+        e.target.value
+      );
+    }
+  });
+});
+
+// 重置顏色
+resetColorBtn.addEventListener("click", () => {
+  // 預設值
+  const defaultColors = {
+    TimeDayBgc: "#ae2300",
+    TimeBgc: "#cccc99",
+    Time2Bgc: "#ffcc66",
+    ABBgc: "#c6d3de",
+    tableBgc: "#e4e4e4",
+  };
+
+  // 重置顏色
+  document.querySelectorAll(".color-controls input").forEach((input) => {
+    // 取得 input 的 id 變更，例如: TimeDayBgColor -> TimeDay-bgc
+    const id = input.id;
+    if (id.endsWith("BgColor")) {
+      const propertyName = id.replace("BgColor", "-bgc");
+      // 變更對應 property 的元素
+      document.documentElement.style.setProperty(
+        `--${propertyName}`,
+        defaultColors[id.replace("BgColor", "Bgc")]
+      );
+      // 同時更新 input 的值
+      input.value = defaultColors[id.replace("BgColor", "Bgc")];
+    }
+  });
 });
 
 // 下載課表圖片

@@ -1,3 +1,12 @@
+:root {
+  --background-color: #f9f9f2;
+  --TimeDay-bgc: #ae2300;
+  --Time-bgc: #cccc99;
+  --Time2-bgc: #ffcc66;
+  --AB-bgc: #c6d3de;
+  --table-bgc: #e4e4e4;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +14,7 @@
 }
 
 body {
-  background-color: #f9f9f2;
+  background-color: var(--background-color);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -18,13 +27,46 @@ h1 {
   padding: 1rem;
 }
 
+.color-controls {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.color-controls label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 16px;
+}
+
+.color-controls button {
+  cursor: pointer;
+  border-radius: 0.5rem;
+  background-color: #409eff;
+  color: #f3f3f3;
+  border: none;
+  padding: 4px 8px;
+  user-select: none;
+}
+
+.color-controls button:hover {
+  filter: brightness(1.1);
+}
+
 span.classroom {
   color: #7d7d7d;
 }
 
 table {
   border: black solid 1.5px;
-  background-color: #e4e4e4;
+  background-color: var(--table-bgc);
   border-collapse: collapse;
   text-align: center;
 }
@@ -43,28 +85,28 @@ td {
 }
 
 .TimeDay {
-  background-color: rgb(174, 35, 0);
+  background-color: var(--TimeDay-bgc);
   color: #ffffff;
 }
 
 tr.TimeDay:hover {
-  background-color: rgb(174, 35, 0);
+  background-color: var(--TimeDay-bgc);
 }
 
 .Time {
-  background-color: #cccc99;
+  background-color: var(--Time-bgc);
 }
 
 .Time2 {
-  background-color: #ffcc66;
+  background-color: var(--Time2-bgc);
 }
 
 .AB {
-  background-color: #c6d3de;
+  background-color: var(--AB-bgc);
 }
 
 tr.AB:hover {
-  background-color: #c6d3de;
+  background-color: var(--AB-bgc);
 }
 
 tr:hover {
@@ -212,7 +254,7 @@ div.course {
 .courses div.add-course-btn:hover,
 .courses div.delete-course-btn:hover,
 .courses div.cancel-btn:hover {
-  mix-blend-mode: multiply;
+  filter: brightness(1.1);
 }
 
 div.schedule {
@@ -309,7 +351,7 @@ dialog::backdrop {
 .modal-content .close-btn:hover,
 .modal-content .submit-btn:hover,
 #download-schedule-btn:hover {
-  mix-blend-mode: multiply;
+  filter: brightness(1.1);
 }
 
 .download-btn-container {

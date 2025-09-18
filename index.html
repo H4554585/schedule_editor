@@ -41,6 +41,31 @@
     </dialog>
 
     <h1>我的課表</h1>
+
+    <!-- 顏色選擇器 -->
+    <div class="color-controls">
+      <label
+        ><span>時段</span>
+        <input type="color" id="TimeDayBgColor" value="#ae2300"
+      /></label>
+      <label
+        ><span>AB區</span> <input type="color" id="ABBgColor" value="#c6d3de"
+      /></label>
+      <label
+        ><span>1~8區</span>
+        <input type="color" id="TimeBgColor" value="#cccc99"
+      /></label>
+      <label
+        ><span>C~G區</span>
+        <input type="color" id="Time2BgColor" value="#ffcc66"
+      /></label>
+      <label
+        ><span>課表背景</span>
+        <input type="color" id="tableBgColor" value="#e4e4e4"
+      /></label>
+      <button id="resetColorBtn">重置顏色</button>
+    </div>
+
     <div class="container">
       <!-- 課程列表 -->
       <div data-allow="move" class="courses">
