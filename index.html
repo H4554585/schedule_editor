@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>課表</title>
+    <!-- html2canvas 套件 -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  </head>
+  <body>
+    <!-- 表單彈窗 -->
+    <dialog id="courseDialog">
+      <div class="modal-content">
+        <button
+          class="close-btn"
+          id="closeModal"
+          onclick="courseDialog.close()"
+        >
+          X
+        </button>
+        <h3>新增課程</h3>
+        <form id="courseForm">
+          <input
+            placeholder="課程名稱(必填)"
+            type="text"
+            id="courseName"
+            name="courseName"
+            required
+          />
+          <input
+            placeholder="上課地點"
+            type="text"
+            id="classroom"
+            name="classroom"
+          />
+
+          <button type="submit" class="submit-btn">確認</button>
+        </form>
+      </div>
+    </dialog>
+
+    <h1>我的課表</h1>
+    <div class="container">
+      <!-- 課程列表 -->
+      <div data-allow="move" class="courses">
+        <div class="delete-mask hide">托拽至此刪除課程</div>
+        <div class="courses-scroll">
+          <div data-effect="copy" draggable="true" class="course">
+            嘗試新增課程<br /><span class="classroom">托拽可自訂課表</span>
+          </div>
+        </div>
+        <div class="buttons">
+          <div class="add-course-btn" onclick="courseDialog.showModal()">
+            新增課程
+          </div>
+          <div class="delete-course-btn">刪除課程</div>
+          <div class="cancel-btn hide">取消</div>
+        </div>
+      </div>
+
+      <!-- 課表 -->
+      <div class="schedule">
+        <div class="have-time">
+          <table>
+            <tr class="TimeDay">
+              <th colspan="2">時段/星期</th>
+              <th>週一</th>
+              <th>週二</th>
+              <th>週三</th>
+              <th>週四</th>
+              <th>週五</th>
+              <th>週六</th>
+              <th>週日</th>
+            </tr>
+            <tr class="AB">
+              <td>07:10 ~ 08:00</td>
+              <th>A</th>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+            </tr>
+            <tr>
+              <td class="Time">08:10 ~ 09:00</td>
+              <th>1</th>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+            </tr>
+            <tr>
+              <td class="Time">09:10 ~ 10:00</td>
+              <th>2</th>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+            </tr>
+            <tr>
+              <td class="Time">10:10 ~ 11:00</td>
+              <th>3</th>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+            </tr>
+            <tr>
+              <td class="Time">11:10 ~ 12:00</td>
+              <th>4</th>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+            </tr>
+            <tr class="AB">
+              <td>12:10 ~ 13:00</td>
+              <th>B</th>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+            </tr>
+            <tr>
+              <td class="Time">13:10 ~ 14:00</td>
+              <th>5</th>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+            </tr>
+            <tr>
+              <td class="Time">14:10 ~ 15:00</td>
+              <th>6</th>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+            </tr>
+            <tr>
+              <td class="Time">15:10 ~ 16:00</td>
+              <th>7</th>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+            </tr>
+            <tr>
+              <td class="Time">16:10 ~ 17:00</td>
+              <th>8</th>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+            </tr>
+            <tr>
+              <td class="Time2">17:05 ~ 17:55</td>
+              <th>C</th>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+            </tr>
+            <tr>
+              <td class="Time2">18:00 ~ 18:50</td>
+              <th>D</th>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+            </tr>
+            <tr>
+              <td class="Time2">18:55 ~ 19:45</td>
+              <th>E</th>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+            </tr>
+            <tr>
+              <td class="Time2">19:50 ~ 20:40</td>
+              <th>F</th>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+            </tr>
+            <tr>
+              <td class="Time2">20:45 ~ 21:35</td>
+              <th>G</th>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+              <td data-allow="copy"></td>
+            </tr>
+          </table>
+        </div>
+
+        <div data-allow="copy" class="no-time">
+          <p style="color: brown">以下修習科目無上課時間：</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 下載圖片按鈕 -->
+    <div class="download-btn-container">
+      <button id="download-schedule-btn">下載課表圖片</button>
+    </div>
+
+    <!-- script -->
+    <script src="./index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,352 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f9f9f2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  color: rgb(14, 64, 156);
+  padding: 1rem;
+}
+
+span.classroom {
+  color: #7d7d7d;
+}
+
+table {
+  border: black solid 1.5px;
+  background-color: #e4e4e4;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+tr,
+th,
+td {
+  border: black solid 1px;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th,
+td {
+  padding: 0.25rem 0.5rem;
+}
+
+.TimeDay {
+  background-color: rgb(174, 35, 0);
+  color: #ffffff;
+}
+
+tr.TimeDay:hover {
+  background-color: rgb(174, 35, 0);
+}
+
+.Time {
+  background-color: #cccc99;
+}
+
+.Time2 {
+  background-color: #ffcc66;
+}
+
+.AB {
+  background-color: #c6d3de;
+}
+
+tr.AB:hover {
+  background-color: #c6d3de;
+}
+
+tr:hover {
+  background-color: #faf8da;
+}
+
+div.container {
+  margin-bottom: 2rem;
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  gap: 16px;
+  min-height: 0; /* 確保能夠縮小 */
+}
+
+.courses {
+  --coursesHeight: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: #c6d3de;
+  border: black solid 1px;
+  border-radius: 0.5rem 0rem 0.5rem 0.5rem;
+  position: relative;
+  flex: 0 0 auto; /* 不要自動伸縮，保持固定寬度 */
+  min-height: 0; /* 確保能夠縮小 */
+  height: var(--coursesHeight);
+  min-width: 10rem;
+}
+
+/* 可滾動的課程清單 */
+.courses-scroll {
+  flex: 1; /* 佔據剩餘空間 */
+  overflow-y: auto; /* 垂直滾動 */
+  overflow-x: hidden; /* 隱藏水平滾動 */
+
+  /* 美化滾動軸 */
+  scrollbar-width: thin;
+  scrollbar-color: #888888 #f3f3f3;
+  scroll-behavior: smooth;
+}
+
+/* 調整 scrollbar 外觀 */
+.courses-scroll::-webkit-scrollbar {
+  width: 8px; /*右側捲軸寬度*/
+}
+
+/* 滾動條軌道（背景） */
+.courses-scroll::-webkit-scrollbar-track {
+  background: inherit;
+  border-radius: 10px; /* 讓軌道圓角 */
+  margin-top: 5px; /* 上方間距，避免頂部太貼 */
+  margin-bottom: 5px;
+}
+
+/* 滾動條本體（可以拖動的那條） */
+.courses-scroll::-webkit-scrollbar-thumb {
+  background: #888888;
+  border-radius: 0.5rem;
+}
+
+/* 捲軸兩側頂端的按鈕 */
+.courses-scroll::-webkit-scrollbar-button {
+  background-color: inherit;
+  border-radius: 0.5rem;
+}
+
+.delete-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f3f3f3;
+  border-radius: inherit;
+  user-select: none;
+  font-size: small;
+}
+
+div.course {
+  background-color: #f3f3f3;
+  border: black solid 1px;
+  font-size: small;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.75rem 0.75rem 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.courses-scroll div.course:last-child {
+  margin: 0.75rem 0.75rem 0.5rem;
+}
+
+.courses div.buttons {
+  margin-top: 8px;
+  user-select: none;
+  flex: 0 0 auto; /* 不要伸縮，保持固定高度 */
+}
+
+.courses div.add-course-btn {
+  cursor: pointer;
+  background-color: #2196f3;
+  color: #f3f3f3;
+  font-size: small;
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem 0.75rem;
+}
+
+.courses div.delete-course-btn {
+  cursor: pointer;
+  background-color: #f44336;
+  color: #f3f3f3;
+  font-size: small;
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem 0.75rem;
+}
+
+.courses div.cancel-btn {
+  cursor: pointer;
+  background-color: #333;
+  color: #f3f3f3;
+  font-size: small;
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem 0.75rem;
+}
+
+.courses div.buttons div:last-child {
+  margin-bottom: 0.75rem;
+}
+
+.courses div.course:hover {
+  background-color: #faf8da;
+}
+
+.courses div.add-course-btn:hover,
+.courses div.delete-course-btn:hover,
+.courses div.cancel-btn:hover {
+  mix-blend-mode: multiply;
+}
+
+div.schedule {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  font-size: 1rem;
+  flex: 1; /* 佔據剩餘空間 */
+  min-height: 0; /* 確保能夠縮小 */
+}
+
+div.schedule div.course {
+  padding: 0.25rem 0.5rem;
+  margin: 0.25rem auto;
+}
+
+div.have-time div.course {
+  width: fit-content;
+}
+
+div.no-time p {
+  padding: 0.25rem 0;
+}
+
+div.no-time div.course {
+  padding: 0.25rem 0.5rem;
+  margin: 0.5rem;
+}
+
+div.no-time div.course:hover {
+  background-color: #faf8da;
+}
+
+.drop-over-copy {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.drop-over-move {
+  background-color: #b4bfc9;
+}
+
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #f3f3f3;
+  padding: 20px 30px;
+  border-radius: 0.5rem;
+  min-width: 300px;
+}
+
+.modal-content input[type="text"] {
+  border: 1px solid #222;
+  border-radius: 0.5rem;
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.modal-content .close-btn {
+  border-radius: 0.5rem;
+  background-color: #f44336;
+  color: #f3f3f3;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  float: right;
+  user-select: none;
+}
+
+.modal-content .submit-btn {
+  border-radius: 0.5rem;
+  background-color: #2196f3;
+  color: #f3f3f3;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  user-select: none;
+}
+
+.modal-content .close-btn:hover,
+.modal-content .submit-btn:hover,
+#download-schedule-btn:hover {
+  mix-blend-mode: multiply;
+}
+
+.download-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+#download-schedule-btn {
+  border-radius: 0.5rem;
+  background-color: blue;
+  color: #f3f3f3;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+@keyframes shaking {
+  from {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(2deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.hide {
+  display: none;
+}
